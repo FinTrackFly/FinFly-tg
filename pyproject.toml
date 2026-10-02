@@ -1,0 +1,76 @@
+[project]
+name = "finfly"
+version = "0.1.0"
+description = "Backend of a personal financial assistant"
+license = "MIT"
+readme = "README.md"
+requires-python = "~=3.13.0"
+
+[project.urls]
+repository = "https://github.com/FinTrackFly/FinFly-tg"
+issues = "https://github.com/FinTrackFly/FinFly-tg/issues"
+
+[dependency-groups]
+prod = [
+    "aiogram~=3.31.0",
+    "sqlalchemy~=2.0.54",
+    "environs~=15.2.0",
+]
+lint = [
+    "ruff~=0.16.8",
+]
+test = [
+    "pytest~=9.1.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.18,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.uv]
+default-groups = ["prod"]
+
+[tool.ruff]
+line-length = 79
+target-version = "py313"
+exclude  = [
+    "migrations",
+    "answers",
+    ".git",
+    ".venv",
+    ".idea",
+    ".vscode",
+    "__pycache__",
+    "*/__init__.py",
+]
+
+[tool.ruff.lint]
+select = [
+  # pyflakes
+  "F",
+  # pycodestyle
+  "E", "W",
+  # pep8-naming
+  "N",
+  # flake8-commas
+  "COM",
+  # flake8-django
+  "DJ",
+  # flake8-return
+  "RET",
+  # flake8-bugbear
+  "B",
+  # flake8-debugger
+  "T10",
+  # flake8-future-annotations
+  "FA",
+  # unconventional-import-alias
+  "ICN001",
+  # flake8-raise
+  "RSE"
+]
+ignore = ["COM812", "DJ001", "DJ012"]
+
+[tool.ruff.format]
+quote-style = "double"
+docstring-code-format = true
